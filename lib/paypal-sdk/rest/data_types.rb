@@ -61,6 +61,8 @@ module PayPal::SDK
           object_of :potential_payer_info, PotentialPayerInfo
           object_of :credit_financing_offered, CreditFinancingOffered
           object_of :failure_reason, String
+          object_of :merchant_installment_selection, String
+          object_of :merchant_installment_selection_optional, String
         end
 
         include RequestDataType
@@ -1258,7 +1260,7 @@ module PayPal::SDK
 
           def get_cert(cert_url)
             data = open(cert_url).read()
-            cert = OpenSSL::X509::Certificate.new data
+            OpenSSL::X509::Certificate.new data
           end
 
           def get_cert_chain()
